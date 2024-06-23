@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/benelan/release-testing/compare/v1.1.2...v1.1.3) (2024-06-23)
+
+
+### Bug Fixes
+
+* More stuffs ([33ee1d9](https://github.com/benelan/release-testing/commit/33ee1d9827f478cf94291531c44367ba0676b3af))
+
 ## [1.1.2](https://github.com/benelan/release-testing/compare/v1.1.1...v1.1.2) (2024-06-23)
 
 

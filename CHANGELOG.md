@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.0](https://github.com/benelan/release-testing/compare/v1.5.0...v1.6.0) (2024-06-23)
+
+
+### Features
+
+* Uknoeit ([edf435c](https://github.com/benelan/release-testing/commit/edf435c8e47f39c74604becc2762e81001961ceb))
+
+
+### Bug Fixes
+
+* Duh ([ad83d1e](https://github.com/benelan/release-testing/commit/ad83d1e465f3cd691f72c037cde57b3e99346da3))
+* Figgity figgity fix booiii ([a231331](https://github.com/benelan/release-testing/commit/a231331814a5d4b8cf3919ce6db7290f9347288d))
+
 ## 1.6.0-next.1 (2024-06-23)
 
 * Duh

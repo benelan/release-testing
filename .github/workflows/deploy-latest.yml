@@ -21,8 +21,8 @@ jobs:
           token: ${{ secrets.ADMIN_TOKEN }}
       - name: Sync dev to main
         run: |
-          git config --global user.email "Ben Elan"
-          git config --global user.name "no-reply@benelan.dev"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git rebase --autostash origin/dev
           git pull --rebase origin main
           git push origin main
@@ -47,9 +47,11 @@ jobs:
           fetch-depth: 0
       - name: Sync release commit to dev
         if: ${{ steps.release.outputs.release_created }}
+        env:
+          GH_TOKEN: ${{ secrets.ADMIN_TOKEN }}
         run: |
-          git config --global user.email "Ben Elan"
-          git config --global user.name "no-reply@benelan.dev"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
           git checkout -b ci/cherry-pick-release-commit origin/dev
 

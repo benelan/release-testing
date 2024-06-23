@@ -1,7 +1,3 @@
 #!/usr/bin/env bash
 
-VERSION="1.0.0" # x-release-please-version 
-
-echo "$VERSION"
-
 echo "feature 1"

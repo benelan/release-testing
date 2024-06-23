@@ -48,9 +48,9 @@ jobs:
           git config --global user.name "no-reply@benelan.dev"
 
           git checkout -b ci/cherry-pick-release-commit origin/dev
-          git cherry-pick origin/main || true
-
-          git checkout --ours "${{github.workspace}}/CHANGELOG.md"
-          git checkout --theirs "${{github.workspace}}/test"
-          git cherry-pick --continue
+          if ! git cherry-pick origin/main; then
+            git checkout --ours "${{github.workspace}}/CHANGELOG.md"
+            git checkout --theirs "${{github.workspace}}/test"
+            git cherry-pick --continue
+          fi
           gh pr create --fill --base "dev" --label "skip visual snapshots"

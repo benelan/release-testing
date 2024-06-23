@@ -1,0 +1,59 @@
+name: Deploy Latest
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  sync-dev-to-main:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Sync dev to main
+        run: |
+          git rebase --autostash --autosquash origin/dev
+          npm install
+          npm run build
+          npm test
+          git push origin/main
+
+  release-please:
+    if: github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          target-branch: main
+      - name: Checkout Repository
+        if: ${{ steps.release.outputs.releases_created }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync release commit to dev
+        if: ${{ steps.release.outputs.releases_created }}
+        run: |
+          git checkout -b ci/cherry-pick-release-commit origin/dev
+          git cherry-pick origin/main || true
+
+          git checkout --ours \
+            packages/*/CHANGELOG.md \
+            packages/calcite-components-angular/projects/component-library/CHANGELOG.md
+
+          git checkout --theirs \
+            packages/*/package.json \
+            packages/calcite-components-angular/projects/component-library/package.json
+
+          git cherry-pick --continue
+          gh pr create --fill --base "dev" --label "skip visual snapshots"

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/benelan/release-testing/compare/v1.3.0...v1.4.0) (2024-06-23)
+
+
+### Features
+
+* Yuh ([43b2751](https://github.com/benelan/release-testing/commit/43b2751f9fa2d5f581322ca79395c3e3aba71b1d))
+
+
+### Bug Fixes
+
+* Etc ([e74d51c](https://github.com/benelan/release-testing/commit/e74d51cb02879bca6d7c9b049a4e7b1d83cf7f70))
+
 ## [1.3.0](https://github.com/benelan/release-testing/compare/v1.2.1...v1.3.0) (2024-06-23)
 
 

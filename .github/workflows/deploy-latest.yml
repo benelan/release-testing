@@ -63,4 +63,5 @@ jobs:
             git cherry-pick --continue
           fi
 
+          git push -u origin HEAD
           gh pr create --fill --head "ci/cherry-pick-release-commit" --base "dev"

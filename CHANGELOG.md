@@ -13,18 +13,6 @@
 * Duh ([ad83d1e](https://github.com/benelan/release-testing/commit/ad83d1e465f3cd691f72c037cde57b3e99346da3))
 * Figgity figgity fix booiii ([a231331](https://github.com/benelan/release-testing/commit/a231331814a5d4b8cf3919ce6db7290f9347288d))
 
-## 1.6.0-next.1 (2024-06-23)
-
-* Duh
-
-## 1.6.0-next.0 (2024-06-23)
-
-* Uknoeit
-
-## 1.5.1-next.0 (2024-06-23)
-
-* Figgity figgity fix booiii
-
 ## [1.5.0](https://github.com/benelan/release-testing/compare/v1.4.0...v1.5.0) (2024-06-23)
 
 

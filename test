@@ -3,3 +3,5 @@
 VERSION="0.0.0" # x-release-please-version 
 
 echo "$VERSION"
+
+echo "feature 1"

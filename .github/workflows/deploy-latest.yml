@@ -18,6 +18,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+          token: ${{ secrets.ADMIN_TOKEN }}
       - name: Sync dev to main
         run: |
           git rebase --autostash --autosquash origin/dev
@@ -32,11 +33,13 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
+          token: ${{ secrets.ADMIN_TOKEN }}
           target-branch: main
       - name: Checkout Repository
         if: ${{ steps.release.outputs.releases_created }}
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.ADMIN_TOKEN }}
           fetch-depth: 0
       - name: Sync release commit to dev
         if: ${{ steps.release.outputs.releases_created }}
@@ -44,13 +47,7 @@ jobs:
           git checkout -b ci/cherry-pick-release-commit origin/dev
           git cherry-pick origin/main || true
 
-          git checkout --ours \
-            packages/*/CHANGELOG.md \
-            packages/calcite-components-angular/projects/component-library/CHANGELOG.md
-
-          git checkout --theirs \
-            packages/*/package.json \
-            packages/calcite-components-angular/projects/component-library/package.json
-
+          git checkout --ours ${{github.workspace}}/packages/*/CHANGELOG.md
+          git checkout --theirs ${{github.workspace}}/test
           git cherry-pick --continue
           gh pr create --fill --base "dev" --label "skip visual snapshots"

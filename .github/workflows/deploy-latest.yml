@@ -20,6 +20,8 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.ADMIN_TOKEN }}
       - name: Sync dev to main
+        env:
+          GH_TOKEN: ${{ secrets.ADMIN_TOKEN }}
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"

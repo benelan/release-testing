@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.1-next.0 (2024-06-23)
+
+
+### Bug Fixes
+
+* Thing
+
 ## [1.6.0](https://github.com/benelan/release-testing/compare/v1.5.0...v1.6.0) (2024-06-23)
 
 

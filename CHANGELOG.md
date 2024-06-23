@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1-next.0 (2024-06-23)
+
+* Figgity figgity fix booiii
+
 ## [1.5.0](https://github.com/benelan/release-testing/compare/v1.4.0...v1.5.0) (2024-06-23)
 
 

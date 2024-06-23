@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 echo "feature 1"
+echo "fix 1"

@@ -39,13 +39,14 @@ jobs:
           token: ${{ secrets.ADMIN_TOKEN }}
           target-branch: main
       - name: Checkout Repository
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v4
         with:
+          ref: main
           token: ${{ secrets.ADMIN_TOKEN }}
           fetch-depth: 0
       - name: Sync release commit to dev
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.release_created }}
         run: |
           git config --global user.email "Ben Elan"
           git config --global user.name "no-reply@benelan.dev"

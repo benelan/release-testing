@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0-next.0 (2024-06-23)
+
+* Uknoeit
+
 ## 1.5.1-next.0 (2024-06-23)
 
 * Figgity figgity fix booiii

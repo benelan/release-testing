@@ -60,4 +60,4 @@ jobs:
             git checkout --theirs "${{github.workspace}}/test"
             git cherry-pick --continue
           fi
-          gh pr create --fill --head --base "dev" --label "skip visual snapshots"
+          gh pr create --fill --head "ci/cherry-pick-release-commit" --base "dev" --label "skip visual snapshots"

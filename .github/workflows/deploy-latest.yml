@@ -23,9 +23,11 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git rebase --autostash origin/dev
-          git pull --rebase origin main
-          git push origin main
+
+          git checkout -b ci/sync-dev-to-main origin/main
+          git rebase origin/dev
+          git push -u origin HEAD
+          gh pr create --fill --head "ci/sync-dev-to-main" --base "main"
 
   release-please:
     if: github.event_name != 'workflow_dispatch'
@@ -53,7 +55,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git fetch --all
           git checkout -b ci/cherry-pick-release-commit origin/dev
           git cherry-pick origin/main
 

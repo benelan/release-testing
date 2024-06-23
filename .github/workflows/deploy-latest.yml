@@ -44,10 +44,13 @@ jobs:
       - name: Sync release commit to dev
         if: ${{ steps.release.outputs.releases_created }}
         run: |
+          git config --global user.email "Ben Elan"
+          git config --global user.name "no-reply@benelan.dev"
+
           git checkout -b ci/cherry-pick-release-commit origin/dev
           git cherry-pick origin/main || true
 
-          git checkout --ours ${{github.workspace}}/packages/*/CHANGELOG.md
-          git checkout --theirs ${{github.workspace}}/test
+          git checkout --ours "${{github.workspace}}/CHANGELOG.md"
+          git checkout --theirs "${{github.workspace}}/test"
           git cherry-pick --continue
           gh pr create --fill --base "dev" --label "skip visual snapshots"

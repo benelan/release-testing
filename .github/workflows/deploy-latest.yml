@@ -21,6 +21,7 @@ jobs:
           token: ${{ secrets.ADMIN_TOKEN }}
       - name: Sync dev to main
         run: |
+          git pull
           git rebase --autostash --autosquash origin/dev
           git push origin main
 
@@ -48,6 +49,7 @@ jobs:
           git config --global user.name "no-reply@benelan.dev"
 
           git checkout -b ci/cherry-pick-release-commit origin/dev
+
           if ! git cherry-pick origin/main; then
             git checkout --ours "${{github.workspace}}/CHANGELOG.md"
             git checkout --theirs "${{github.workspace}}/test"

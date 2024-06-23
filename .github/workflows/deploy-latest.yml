@@ -21,7 +21,7 @@ jobs:
       - name: Sync dev to main
         run: |
           git rebase --autostash --autosquash origin/dev
-          git push origin/main
+          git push origin main
 
   release-please:
     if: github.event_name != 'workflow_dispatch'

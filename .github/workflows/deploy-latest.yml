@@ -21,9 +21,6 @@ jobs:
       - name: Sync dev to main
         run: |
           git rebase --autostash --autosquash origin/dev
-          npm install
-          npm run build
-          npm test
           git push origin/main
 
   release-please:
